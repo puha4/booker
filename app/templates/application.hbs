@@ -1,5 +1,13 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<div class="container-fluid">
+    {{nav-bar session=session}}
+    {{outlet}}
 
-{{outlet}}
+    {{#if session.isAuthenticated}}
+        <a {{action 'invalidateSession'}}>Logout</a>
+    {{else}}
+        {{#link-to 'login' tagName="li"}}
+            <a href>Login</a>
+        {{/link-to}}
+    {{/if}}
+</div>
+

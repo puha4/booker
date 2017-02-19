@@ -1,6 +1,7 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
+  console.log(environment);
   var ENV = {
     modulePrefix: 'booker',
     environment: environment,
@@ -24,6 +25,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+      ENV.apiURL = 'http://localhost:8000';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
