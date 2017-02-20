@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
-  console.log(environment);
+  
   var ENV = {
     modulePrefix: 'booker',
     environment: environment,
@@ -25,7 +25,14 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-      ENV.apiURL = 'http://localhost:8000';
+      ENV.API_URL = 'http://localhost:8000';
+      ENV.API_CLIENT_ID = '1_436z4gfc3lesgkkoowoosgw8owkgck808cskg04cwkw4o0gwc4';
+      ENV.API_CLIENT_SECRET = 'x6nqhx7lzi80ggc84ook8gcs0wk8ksos40ccgk4w4o48gc44c';
+
+      ENV['simple-auth'] = {
+          crossOriginWhitelist:['http://localhost:8000']
+      };
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

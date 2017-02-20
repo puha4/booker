@@ -2,11 +2,11 @@ import OAuth2PasswordGrant from 'ember-simple-auth/authenticators/oauth2-passwor
 import config from '../config/environment';
 
 export default OAuth2PasswordGrant.extend({
-    serverTokenEndpoint: 'http://localhost:8000/oauth/v2/token',
+    serverTokenEndpoint: config.API_URL + '/oauth/v2/token',
 
     makeRequest: function(url, data) {
-        data.client_id = '1_sifhznfzcdckwkc084kkwkowc4gccgs44cko0gcos8ccgg84w';
-        data.client_secret = '4jn45su4f3qcs0cs8kwowc88ggwwwkcsocscc0w0ggo0o0wc80';
+        data.client_id = config.API_CLIENT_ID;
+        data.client_secret = config.API_CLIENT_SECRET;
 
         return this._super(url, data);
     }

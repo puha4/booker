@@ -1,13 +1,5 @@
 <div class="container-fluid">
     {{nav-bar session=session}}
     {{outlet}}
-
-    {{#if session.isAuthenticated}}
-        <a {{action 'invalidateSession'}}>Logout</a>
-    {{else}}
-        {{#link-to 'login' tagName="li"}}
-            <a href>Login</a>
-        {{/link-to}}
-    {{/if}}
 </div>
 
