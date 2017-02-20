@@ -26,12 +26,12 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
       ENV.API_URL = 'http://localhost:8000';
-      ENV.API_CLIENT_ID = '1_436z4gfc3lesgkkoowoosgw8owkgck808cskg04cwkw4o0gwc4';
-      ENV.API_CLIENT_SECRET = 'x6nqhx7lzi80ggc84ook8gcs0wk8ksos40ccgk4w4o48gc44c';
+      ENV.API_CLIENT_ID = '1_sifhznfzcdckwkc084kkwkowc4gccgs44cko0gcos8ccgg84w';
+      ENV.API_CLIENT_SECRET = '4jn45su4f3qcs0cs8kwowc88ggwwwkcsocscc0w0ggo0o0wc80';
 
-      ENV['simple-auth'] = {
-          crossOriginWhitelist:['http://localhost:8000']
-      };
+      // ENV['simple-auth'] = {
+      //     crossOriginWhitelist:['http://localhost:8000']
+      // };
 
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
