@@ -9,9 +9,14 @@ export default Ember.Route.extend({
         this.store.findAll('employee').then(function(employees) {
             controller.set('employees', employees);
         });
+        let appointment = {};
         let localAppointment = controller.get('localAppointment.appointment');
+
+        if (localAppointment.boardroom === model.id) {
+            appointment = localAppointment
+        }
         
         controller.set('boardroom', model);
-        controller.set('appointment', localAppointment);
+        controller.set('appointment', appointment);
     }
 });

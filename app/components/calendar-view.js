@@ -1,22 +1,40 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    // didInsertElement() {
-    //     this._super(...arguments);
+    didInsertElement: function(){
+        $('#calendar').fullCalendar({
+            events: [],
+        });
+    },
 
-
-            // this.$("#calendar").fullCalendar({
-            //     header: {
-            //         left: 'prev,next today',
-            //         center: 'title',
-            //         right: 'month,agendaWeek,agendaDay '
-            //     },
-            //     editable: true,
-            //     events: []
-            // });
-
-        // this.set('fullcalendar', fullcalendar);
+    // findModel: function(modelName){
+    //     var controller 	= this.get('controllerContent');
+    //     var results = this.store.find(modelName);
+    //     controller.set('content', results);
+    //
+    //     var _self = this;
+    //
+    //     results.then(function(xhr){
+    //         _self.showCalendar(xhr.content);
+    //     });
     // },
+    //
+    // parseData: function(data){
+    //     return $.map(data, function(item){
+    //         return {
+    //             title:item.get('label'),
+    //             date: item.get('_data.date')
+    //         }
+    //     })
+    // },
+    //
+    // showCalendar: function(data){
+    //     var events = this.parseData(data);
+    //
+    //     $('#calendar').fullCalendar({
+    //         events: events,
+    //     });
+    // }
 
     // willDestroyElement: function () {
     //     this.get('fullcalendar').stop();

@@ -9,7 +9,9 @@
         </div>
     </div>
 </div>
-
+{{#each appointments as |appointment|}}
+    <p>{{appointment.bookedDate}}</p>
+{{/each}}
 <div>
     {{calendar-view}}
 </div>

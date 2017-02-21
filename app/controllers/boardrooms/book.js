@@ -14,7 +14,12 @@ export default Ember.Controller.extend({
         },
 
         saveToLocal() {
-            this.set('localAppointment.appointment', this.get('appointment'));
+            let boardroomId = this.get('boardroom').id;
+            let appointment = this.get('appointment');
+
+            appointment.boardroom = boardroomId;
+
+            this.set('localAppointment.appointment', appointment);
         }
     }
 });

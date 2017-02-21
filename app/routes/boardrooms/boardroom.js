@@ -11,5 +11,14 @@ export default Ember.Route.extend({
 
     setupController: function(controller, model) {
         controller.set('boardroom', model);
+
+
+
+        this.store.query('appointment', {boardroom: model.id}).then(function(appointments) {
+            controller.set('appointments', appointments);
+        });
+
+
+
     }
 });
