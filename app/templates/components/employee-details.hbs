@@ -1,0 +1,6 @@
+<h1>{{employee.firstname}} </h1>
+<h3>{{employee.email}}</h3>
+<div>
+    {{#link-to "employee.edit" book class="btn btn-success"}}Edit Employee{{/link-to}}
+    <a href="" class="btn btn-danger" {{action 'deleteEmployee'}}>Delete Employee</a>
+</div>

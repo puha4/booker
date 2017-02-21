@@ -12,6 +12,10 @@ Router.map(function() {
     this.route('boardroom', {path: ':boardroom_id'});
     this.route('book', {path: ':boardroom_id/book'});
   });
+  this.route('employees', function () {
+    this.route('employee', {path: ':employee_id'});
+    this.route('new');
+  });
   this.route('test');
 });
 

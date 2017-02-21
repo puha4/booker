@@ -1,28 +1,39 @@
-<h1>{{model.title}}</h1>
+
+<div class="row">
+    <div class="col-sm-6">
+        <h1>{{model.boardroom.title}}</h1>
+    </div>
+    <div class="col-sm-6">
+        <div class="pull-right top-buffer">
+            {{#link-to "boardrooms.boardroom" model.boardroom class="btn btn-info"}}Cancel{{/link-to}}
+        </div>
+    </div>
+</div>
 
 <form action="">
     <div class="form-group">
         <label for="">1. Booked for</label>
-        <select class="form-control" name="" id="">
-            <option value="">fdfdfd</option>
-            <option value="">fdfdfd</option>
+        <select class="form-control" onchange={{action "updateValue" value="target.value"}}>
+            {{#each model.employees as |employee|}}
+                <option value="{{employee.id}}">{{employee.firstname}}</option>
+            {{/each}}
         </select>
     </div>
 
     <div class="form-group">
         <label for="">2. I would like to book this meeting:</label>
-        <input type="text" class="form-control">
+        {{input class="form-control" value=model.appointment.bookedDate}}
     </div>
 
     <div class="form-group">
         <label for="">3. Specify what the time and end of the meeting (This will be what people see on the calendar)</label>
-        <input type="text" class="form-control">
-        <input type="text" class="form-control">
+        {{input class="form-control" value=model.appointment.bookedDateFrom}}
+        {{input class="form-control" value=model.appointment.bookedDateTo}}
     </div>
 
     <div class="form-group">
         <label for="">4. Enter the specifics for the meeting. (This will be what people see when they click on an event link.)</label>
-        <textarea class="form-control"></textarea>
+        {{textarea class="form-control" value=model.appointment.specifics}}
     </div>
 
     <div class="form-group">
