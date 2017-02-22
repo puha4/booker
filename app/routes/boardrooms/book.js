@@ -6,15 +6,17 @@ export default Ember.Route.extend({
     },
 
     setupController: function(controller, model) {
-        this.store.findAll('employee').then(function(employees) {
-            controller.set('employees', employees);
-        });
-        let appointment = {};
+        let appointment = this.store.createRecord('appointment');
         let localAppointment = controller.get('localAppointment.appointment');
 
         if (localAppointment.boardroom === model.id) {
             appointment = localAppointment;
         }
+
+        this.store.findAll('employee').then(function(employees) {
+            controller.set('employees', employees);
+            appointment.employee = employees.get('firstObject').id;
+        });
         
         controller.set('boardroom', model);
         controller.set('appointment', appointment);

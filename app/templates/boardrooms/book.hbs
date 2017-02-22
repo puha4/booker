@@ -10,10 +10,10 @@
     </div>
 </div>
 
-<form action="">
+<form {{action 'submit' appointment on='submit'}}>
     <div class="form-group">
         <label for="">1. Booked for</label>
-        <select class="form-control" onchange={{action "updateValue" value="target.value"}}>
+        <select class="form-control" onchange={{action "updateEmployeeValue" value="target.value"}}>
             {{#each employees as |employee|}}
                 <option value="{{employee.id}}">{{employee.firstname}}</option>
             {{/each}}
@@ -22,14 +22,14 @@
 
     <div class="form-group">
         <label for="">2. I would like to book this meeting:</label>
-        {{bs-datetimepicker date=appointment.bookedDate updateDate=(action (mut appointment.bookedDate))}}
+        {{date-picker value=appointment.bookedDate action=(action 'saveBookedDate')}}
     </div>
 
     <div class="form-group">
-        <label for="">3. Specify what the time and end of the meeting (This will be what people see on the calendar)</label>
-        {{bs-datetimepicker date=appointment.bookedDateFrom updateDate=(action (mut appointment.bookedDateFrom))}}
-        <br>
-        {{bs-datetimepicker date=appointment.bookedDateTo updateDate=(action (mut appointment.bookedDateTo))}}
+        <label for="">3. Specify what the time and end of the meeting (This will be what people see on the calendar)</label><br>
+        {{time-picker value=appointment.bookedDateFrom minTime='08:00' maxTime='18:30' step=30 amPm=false action=(action 'saveBookedDateFrom')}}-
+
+        {{time-picker value=appointment.bookedDateTo minTime='08:00' maxTime='18:30' step=30 amPm=false action=(action 'saveBookedDateTo')}}
 
     </div>
 
