@@ -13,7 +13,7 @@ export default Ember.Route.extend({
         let localAppointment = controller.get('localAppointment.appointment');
 
         if (localAppointment.boardroom === model.id) {
-            appointment = localAppointment
+            appointment = localAppointment;
         }
         
         controller.set('boardroom', model);
