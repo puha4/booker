@@ -22,13 +22,15 @@
 
     <div class="form-group">
         <label for="">2. I would like to book this meeting:</label>
-        {{input class="form-control" value=appointment.bookedDate key-up="saveToLocal"}}
+        {{bs-datetimepicker date=appointment.bookedDate updateDate=(action (mut appointment.bookedDate))}}
     </div>
 
     <div class="form-group">
         <label for="">3. Specify what the time and end of the meeting (This will be what people see on the calendar)</label>
-        {{input class="form-control" value=appointment.bookedDateFrom key-up="saveToLocal"}}
-        {{input class="form-control" value=appointment.bookedDateTo key-up="saveToLocal"}}
+        {{bs-datetimepicker date=appointment.bookedDateFrom updateDate=(action (mut appointment.bookedDateFrom))}}
+        <br>
+        {{bs-datetimepicker date=appointment.bookedDateTo updateDate=(action (mut appointment.bookedDateTo))}}
+
     </div>
 
     <div class="form-group">
@@ -38,19 +40,17 @@
 
     <div class="form-group">
         <label for="">5. Is this going to be a recuming event?</label>
-        <input type="radio">
-        <input type="radio">
+        {{input type="checkbox" name="recuming" checked=appointment.recuming}}
     </div>
 
     <div class="form-group">
         <label for="">6. If it is recuming, specify weekly, bi-weekly, or monthly.</label>
-        <input type="radio">
-        <input type="radio">
+        {{input type="checkbox" name="recumingType" checked=appointment.recumingType}}
     </div>
     <div class="form-group">
         <p>If weekly or bi-weekly, specify the number of weeks for it to keep recuming.
             If monthly, specify the number of months. (If you choose "be-weekly" and put in an odd number of weeks, the computer will round down.)</p>
-        <input type="text">duration (max 4 weeks)
+        {{input type="text" class="form-control" value=appointment.recumingWeekOrMonthNumber }}*duration (max 4 weeks)
     </div>
 
     <button class="btn btn-primary" type="submit">Submit</button>

@@ -2,6 +2,8 @@
   "name": "booker",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "blob-polyfill": "^1.0.20150320"
+    "blob-polyfill": "^1.0.20150320",
+    "pikaday": "^1.5.1",
+    "moment": "^2.17.1"
   }
 }

@@ -1,10 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-
-    actions: {
-        getAppointments() {
-            console.log('fdfd');
-        }
+    store: Ember.inject.service(),
+        
+    getAppointments(boardroom_id) {
+        return this.get('store').query('appointment', {boardroom: boardroom_id});
     }
 });

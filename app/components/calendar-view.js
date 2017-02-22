@@ -1,18 +1,27 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
-    appointment: Ember.inject.service('appointment'),
+    appointment : Ember.inject.service(),
 
     didInsertElement() {
-        this.showCalendar(this.get('appointments'));
+        this._super(...arguments);
+        $('#calendar').fullCalendar({
+            events: []
+        });
+        let _this = this;
+        this.get('appointment').getAppointments(this.get('boardroom').id).then(function (appointments) {
+            _this.showCalendar(appointments);
+        });
+
     },
 
     didUpdateAttrs() {
-        this.get('appointment').getAppointments();
-        // console.log(this.get('appointments').get('firstObject').get('id'));
-        // this._super(...arguments);
-        // this.showCalendar(this.get('appointments'));
+        this._super(...arguments);
+
+        let _this = this;
+        this.get('appointment').getAppointments(this.get('boardroom').id).then(function (appointments) {
+            _this.showCalendar(appointments);
+        });
     },
 
     parseData: function(data){
@@ -29,8 +38,7 @@ export default Ember.Component.extend({
         var events = this.parseData(data);
         console.log(events);
 
-        $('#calendar').fullCalendar({
-            events: events
-        });
+        $('#calendar').fullCalendar('removeEvents');
+        $('#calendar').fullCalendar('renderEvents', events);
     }
 });
