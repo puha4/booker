@@ -10,6 +10,7 @@ export default Ember.Component.extend({
         });
         let _this = this;
         this.get('appointment').getAppointments(this.get('boardroom').id).then(function (appointments) {
+            console.log(appointments.get('firstObject').id);
             _this.showCalendar(appointments);
         });
 
@@ -36,9 +37,8 @@ export default Ember.Component.extend({
 
     showCalendar: function(data){
         var events = this.parseData(data);
-        console.log(events);
 
         $('#calendar').fullCalendar('removeEvents');
-        $('#calendar').fullCalendar('renderEvents', events);
+        $('#calendar').fullCalendar('renderEvents', events, true);
     }
 });

@@ -19,7 +19,8 @@ export default Ember.Controller.extend({
             
             appointment.save()
                 .then(function (appointment) {
-                    _this.transitionTo('boardrooms', this.get('boardroom').id);
+                    _this.set('localAppointment.appointment', {});
+                    _this.transitionToRoute('boardrooms.boardroom', _this.get('boardroom').id);
                 });
         },
 
