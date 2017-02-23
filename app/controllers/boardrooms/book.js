@@ -36,7 +36,7 @@ export default Ember.Controller.extend({
 
         saveBookedDate(date) {
             let appointment = this.get('appointment');
-            appointment.bookedDate = date.format("YYYY-MM-DD HH:mm");
+            appointment.bookedDate = date.format("YYYY-MMM-DD HH:mm");
 
             this.set('localAppointment.appointment', appointment);
         },
@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
 
             let fullDateTimestamp = bookedDateTimestamp + bookedDateFromTimestamp + this.get('millisecondsInTwoHoursOffset');
 
-            appointment.bookedDateFrom = moment(fullDateTimestamp).format("YYYY-MM-DD HH:mm");
+            appointment.bookedDateFrom = moment(fullDateTimestamp).format("YYYY-MMM-DD HH:mm");
 
             this.set('localAppointment.appointment', appointment);
         },
@@ -62,7 +62,7 @@ export default Ember.Controller.extend({
 
             let fullDateTimestamp = bookedDateTimestamp + bookedDateFromTimestamp + this.get('millisecondsInTwoHoursOffset');
 
-            appointment.bookedDateTo = moment(fullDateTimestamp).format("YYYY-MM-DD HH:mm");
+            appointment.bookedDateTo = moment(fullDateTimestamp).format("YYYY-MMM-DD HH:mm");
 
             this.set('localAppointment.appointment', appointment);
         }

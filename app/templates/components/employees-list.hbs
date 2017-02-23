@@ -1,5 +1,7 @@
 <div class="list-group">
     {{#each employees as |employee|}}
-        {{#link-to "employees.employee" employee class="list-group-item"}}#{{employee.id}}. {{employee.firstname}}{{/link-to}}
+        {{#unless employee.isNew}}
+            {{#link-to "employees.employee" employee class="list-group-item"}}#{{employee.id}}. {{employee.firstName}}{{/link-to}}
+        {{/unless}}
     {{/each}}
 </div>

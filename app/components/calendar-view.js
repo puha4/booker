@@ -5,10 +5,16 @@ export default Ember.Component.extend({
 
     didInsertElement() {
         this._super(...arguments);
-        $('#calendar').fullCalendar({
-            events: []
-        });
+
         let _this = this;
+
+        $('#calendar').fullCalendar({
+            events: [],
+            eventClick(calEvent, jsEvent, view) {
+                _this.get('eventClick')(calEvent.id);
+            }
+        });
+
         this.get('appointment').getAppointments(this.get('boardroom').id).then(function (appointments) {
             console.log(appointments.get('firstObject').id);
             _this.showCalendar(appointments);
@@ -28,6 +34,7 @@ export default Ember.Component.extend({
     parseData: function(data){
         return data.map(function(item){
             return {
+                id: item.get('id'),
                 title:item.get('specifics'),
                 start: item.get('bookedDateFrom'),
                 end: item.get('bookedDateTo')

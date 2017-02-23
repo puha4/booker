@@ -15,7 +15,7 @@
         <label for="">1. Booked for</label>
         <select class="form-control" onchange={{action "updateEmployeeValue" value="target.value"}}>
             {{#each employees as |employee|}}
-                <option value="{{employee.id}}">{{employee.firstname}}</option>
+                <option value="{{employee.id}}">{{employee.firstName}}</option>
             {{/each}}
         </select>
     </div>

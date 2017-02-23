@@ -5,12 +5,12 @@
     <div class="col-sm-6">
         <div class="pull-right top-buffer">
             {{#link-to "boardrooms.book" boardroom class="btn btn-success"}}Book It!{{/link-to}}
-            <a href="" class="btn btn-warning">Employee List</a>
+            {{#link-to "employees" class="btn btn-warning"}}Employee List{{/link-to}}
         </div>
     </div>
 </div>
 
 <div>
-    {{calendar-view boardroom=boardroom}}
+    {{calendar-view boardroom=boardroom eventClick=(action 'eventClick')}}
 </div>
 

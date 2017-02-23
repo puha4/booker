@@ -26,8 +26,8 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
       ENV.API_URL = 'http://localhost:8000';
-      ENV.API_CLIENT_ID = '2_14himcrl3glc4ko8coww4cw88ssocwwogg0g4ok4wso8wkgocc';
-      ENV.API_CLIENT_SECRET = 'eoapdmyv1y0ckk4gw480c4840s8kk4kwgo0c888sc8c8w0g40';
+      ENV.API_CLIENT_ID = '3_6df20atsydc00s4wkocscook488ko4skskcskg4gs84cskgk88';
+      ENV.API_CLIENT_SECRET = '2493pdir3xz440sw8sookgcsgskw4owok404kwwog8ggscc48c';
 
       // ENV['simple-auth'] = {
       //     crossOriginWhitelist:['http://localhost:8000']
