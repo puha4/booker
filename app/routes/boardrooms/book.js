@@ -12,9 +12,9 @@ export default Ember.Route.extend({
         if (+localAppointment.boardroom === +model.id) {
             appointment.employee = localAppointment.employee;
             appointment.boardroom = localAppointment.boardroom;
-            appointment.bookedDate = localAppointment.bookedDate;
-            appointment.bookedDateFrom = localAppointment.bookedDateFrom ;
-            appointment.bookedDateTo  = localAppointment.bookedDateTo;
+            appointment.bookedDate = moment(localAppointment.bookedDate);
+            appointment.bookedDateFrom = moment(localAppointment.bookedDateFrom);
+            appointment.bookedDateTo  = moment(localAppointment.bookedDateTo);
             appointment.specifics = localAppointment.specifics;
             appointment.recuming = localAppointment.recuming;
             appointment.recumingType = localAppointment.recumingType;
@@ -26,7 +26,7 @@ export default Ember.Route.extend({
             appointment.employee = employees.get('firstObject').id;
         });
 
-        if (!appointment.recumingType) {
+        if (appointment.recumingType === '' || appointment.recumingType === undefined || appointment.recumingType === null) {
             appointment.recumingType = 1;
         }
         

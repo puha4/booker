@@ -22,15 +22,15 @@
 
     <div class="form-group">
         <label for="">2. I would like to book this meeting:</label>
-        {{date-picker action=(action 'saveBookedDate')}}
+        {{date-picker value=appointment.bookedDate action=(action 'saveBookedDate')}}
         {{display-errors errors=errors.bookedDate showErrors=showErrors}}
     </div>
 
     <div class="form-group">
         <label for="">3. Specify what the time and end of the meeting (This will be what people see on the calendar)</label><br>
-        {{time-picker  minTime='08:00' maxTime='18:30' step=30 amPm=false action=(action 'saveBookedDateFrom')}}-
+        {{time-picker value=appointment.bookedDateFrom minTime='08:00' maxTime='18:30' step=30 amPm=false action=(action 'saveBookedDateFrom')}}-
 
-        {{time-picker  minTime='08:00' maxTime='18:30' step=30 amPm=false action=(action 'saveBookedDateTo')}}
+        {{time-picker value=appointment.bookedDateTo minTime='08:00' maxTime='18:30' step=30 amPm=false action=(action 'saveBookedDateTo')}}
 
         {{display-errors errors=errors.bookedDateFrom showErrors=showErrors}}
         {{display-errors errors=errors.bookedDateTo showErrors=showErrors}}
