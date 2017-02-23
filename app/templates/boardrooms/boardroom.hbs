@@ -11,6 +11,6 @@
 </div>
 
 <div>
-    {{calendar-view boardroom=boardroom eventClick=(action 'eventClick')}}
+    {{calendar-view boardroom=boardroom action='renderModal'}}
 </div>
-
+{{outlet 'modal'}}

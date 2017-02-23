@@ -11,7 +11,7 @@ export default Ember.Component.extend({
         $('#calendar').fullCalendar({
             events: [],
             eventClick(calEvent, jsEvent, view) {
-                _this.get('eventClick')(calEvent.id);
+                _this.sendAction('action', calEvent.id);
             }
         });
 

@@ -1,0 +1,10 @@
+{{#modal-window title="Edit event" size="modal-lg" save='save' close='removeModal'}}
+    <form {{action 'save' on='submit'}}>
+        <label for="">Title</label>
+        {{input type="text" value=model.specifics class="form-control"}}
+        <label for="">From</label>
+        {{input type="text" value=model.bookedDateFrom class="form-control"}}
+        <label for="">To</label>
+        {{input type="text" value=model.bookedDateTo class="form-control"}}
+    </form>
+{{/modal-window}}
