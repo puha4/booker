@@ -15,8 +15,7 @@ export default Ember.Component.extend({
             }
         });
 
-        this.get('appointment').getAppointments(this.get('boardroom').id).then(function (appointments) {
-            console.log(appointments.get('firstObject').id);
+        this.get('appointment').getAppointments(this.get('boardroom').id).then((appointments) => {
             _this.showCalendar(appointments);
         });
 
@@ -26,12 +25,12 @@ export default Ember.Component.extend({
         this._super(...arguments);
 
         let _this = this;
-        this.get('appointment').getAppointments(this.get('boardroom').id).then(function (appointments) {
+        this.get('appointment').getAppointments(this.get('boardroom').id).then((appointments) => {
             _this.showCalendar(appointments);
         });
     },
 
-    parseData: function(data){
+    parseData(data) {
         return data.map(function(item){
             return {
                 id: item.get('id'),
@@ -42,7 +41,7 @@ export default Ember.Component.extend({
         });
     },
 
-    showCalendar: function(data){
+    showCalendar(data) {
         var events = this.parseData(data);
 
         $('#calendar').fullCalendar('removeEvents');

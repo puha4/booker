@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     actions: {
-        deleteEmployee: function () {
+        deleteEmployee() {
             this.sendAction('action', this.get('employee'));
         }
     }

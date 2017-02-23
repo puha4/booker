@@ -10,9 +10,18 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
         createEmployee(employee) {
             var _this = this;
 
+            var errors = _this.controllerFor('employees.new').get('errors');
+
             employee.save()
-                .then(function (employee) {
+                .then((employee) => {
                     _this.transitionTo('employees.employee', employee);
+                })
+                .catch((response) => {
+                        console.log(response);
+                    // console.log(Ember.$.parseJSON(response));
+                        // .forEach(function (error) {
+                        //     console.log(error);
+                        // });
                 });
         },
 
@@ -20,7 +29,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
             var _this = this;
 
             employee.save()
-                .then(function (employee) {
+                .then((employee) => {
                     _this.transitionTo('employees.employee', employee);
                 });
         },
@@ -29,7 +38,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
             var _this = this;
 
             employee.destroyRecord()
-                .then(function () {
+                .then(() => {
                     _this.transitionTo('employees');
                 });
         }

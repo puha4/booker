@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     actions: {
-        save: function() {
+        save() {
             this.$('.modal').modal('hide');
             this.sendAction('save');
         }

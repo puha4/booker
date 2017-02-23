@@ -12,13 +12,13 @@ export default Ember.Component.extend({
     }.property(),
     
     actions: {
-        submit: function () {
+        submit() {
             var _this = this;
             var model = this.get('employee');
 
-            model.validate().then(()=>{
+            model.validate().then(() => {
                 this.sendAction('action', model);
-            }).catch(()=>{
+            }).catch(() => {
                 _this.set('errors',model.get('errors'));
             });
         }

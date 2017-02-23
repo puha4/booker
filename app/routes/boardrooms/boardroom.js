@@ -5,7 +5,7 @@ export default Ember.Route.extend({
         return this.store.findRecord('boardroom', params.boardroom_id);
     },
 
-    setupController: function(controller, model) {
+    setupController(controller, model) {
         controller.set('boardroom', model);
     },
 
@@ -15,11 +15,11 @@ export default Ember.Route.extend({
         //     // this.transitionToRoute('boardrooms');
         // },
 
-        renderModal: function(id) {
+        renderModal(id) {
             var _this = this;
 
             this.store.findRecord('appointment', id)
-                .then(function (appointment) {
+                .then((appointment) => {
                     _this.render('modals/event', {
                         into: 'boardrooms.boardroom',
                         outlet: 'modal',
@@ -27,7 +27,7 @@ export default Ember.Route.extend({
                     });
                 });
         },
-        removeModal: function() {
+        removeModal() {
             this.disconnectOutlet({
                 outlet: 'modal',
                 parentView: 'boardrooms.boardroom'
