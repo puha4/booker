@@ -9,14 +9,26 @@ export default Ember.Route.extend({
         let appointment = this.store.createRecord('appointment');
         let localAppointment = controller.get('localAppointment.appointment');
 
-        if (localAppointment.boardroom === model.id) {
-            appointment = localAppointment;
+        if (+localAppointment.boardroom === +model.id) {
+            appointment.employee = localAppointment.employee;
+            appointment.boardroom = localAppointment.boardroom;
+            appointment.bookedDate = localAppointment.bookedDate;
+            appointment.bookedDateFrom = localAppointment.bookedDateFrom ;
+            appointment.bookedDateTo  = localAppointment.bookedDateTo;
+            appointment.specifics = localAppointment.specifics;
+            appointment.recuming = localAppointment.recuming;
+            appointment.recumingType = localAppointment.recumingType;
+            appointment.recumingWeekOrMonthNumber = localAppointment.recumingWeekOrMonthNumber;
         }
 
         this.store.findAll('employee').then((employees) => {
             controller.set('employees', employees);
             appointment.employee = employees.get('firstObject').id;
         });
+
+        if (!appointment.recumingType) {
+            appointment.recumingType = 1;
+        }
         
         controller.set('boardroom', model);
         controller.set('appointment', appointment);
