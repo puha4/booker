@@ -10,12 +10,14 @@ export default Ember.Component.extend({
 
         $('#calendar').fullCalendar({
             events: [],
+            displayEventEnd: true,
+            timeFormat: 'H:mm',
             eventClick(calEvent, jsEvent, view) {
                 _this.sendAction('action', calEvent.id);
             }
         });
 
-        this.get('appointment').getAppointments(this.get('boardroom').id).then((appointments) => {
+        this.get('appointment').getAppointments(this.get('boardroom.id')).then((appointments) => {
             _this.showCalendar(appointments);
         });
 
@@ -25,7 +27,7 @@ export default Ember.Component.extend({
         this._super(...arguments);
 
         let _this = this;
-        this.get('appointment').getAppointments(this.get('boardroom').id).then((appointments) => {
+        this.get('appointment').getAppointments(this.get('boardroom.id')).then((appointments) => {
             _this.showCalendar(appointments);
         });
     },
@@ -34,9 +36,9 @@ export default Ember.Component.extend({
         return data.map(function(item){
             return {
                 id: item.get('id'),
-                title:item.get('specifics'),
-                start: item.get('bookedDateFrom'),
-                end: item.get('bookedDateTo')
+                title: item.get('specifics'),
+                start: moment(item.get('bookedDateFrom')),
+                end: moment(item.get('bookedDateTo'))
             };
         });
     },

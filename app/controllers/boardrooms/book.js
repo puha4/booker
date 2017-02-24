@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
     actions:{
         updateEmployeeValue(value) {
             let appointment = this.get('appointment');
-            appointment.employee = value;
+            appointment.set('employee', value);
             
             this.saveLocalAppointment(appointment);
         },
@@ -23,12 +23,12 @@ export default Ember.Controller.extend({
 
         submit(appointment) {
             var _this = this;
-            
-            appointment.bookedDate = appointment.bookedDate.format("YYYY-MMM-DD HH:mm");
-            appointment.bookedDateFrom = appointment.bookedDateFrom.format("YYYY-MMM-DD HH:mm");
-            appointment.bookedDateTo = appointment.bookedDateTo.format("YYYY-MMM-DD HH:mm");
 
             appointment.validate().then(() => {
+                appointment.bookedDate = appointment.get('bookedDate').format("YYYY-MMM-DD HH:mm");
+                appointment.bookedDateFrom = appointment.get('bookedDateFrom').format("YYYY-MMM-DD HH:mm");
+                appointment.bookedDateTo = appointment.get('bookedDateTo').format("YYYY-MMM-DD HH:mm");
+                
                 appointment.save()
                     .then((appointment) => {
                         _this.set('localAppointment.appointment', {});
@@ -40,17 +40,15 @@ export default Ember.Controller.extend({
         },
 
         saveToLocal() {
-            let boardroomId = this.get('boardroom').id;
             let appointment = this.get('appointment');
-
-            appointment.boardroom = boardroomId;
+            appointment.set('boardroom', this.get('boardroom.id'));
 
             this.saveLocalAppointment(appointment);
         },
 
         saveBookedDate(date) {
             let appointment = this.get('appointment');
-            appointment.bookedDate = date;
+            appointment.set('bookedDate', date);
 
             this.saveLocalAppointment(appointment);
         },
@@ -58,12 +56,12 @@ export default Ember.Controller.extend({
         saveBookedDateFrom(date) {
             let appointment = this.get('appointment');
 
-            let bookedDateTimestamp = moment(appointment.bookedDate).valueOf();
+            let bookedDateTimestamp = moment(appointment.get('bookedDate')).valueOf();
             let bookedDateFromTimestamp = moment(date).valueOf();
 
             let fullDateTimestamp = bookedDateTimestamp + bookedDateFromTimestamp + this.get('millisecondsInTwoHoursOffset');
 
-            appointment.bookedDateFrom = moment(fullDateTimestamp);
+            appointment.set('bookedDateFrom', moment(fullDateTimestamp));
 
             this.saveLocalAppointment(appointment);
         },
@@ -71,12 +69,12 @@ export default Ember.Controller.extend({
         saveBookedDateTo(date) {
             let appointment = this.get('appointment');
 
-            let bookedDateTimestamp = moment(appointment.bookedDate).valueOf();
+            let bookedDateTimestamp = moment(appointment.get('bookedDate')).valueOf();
             let bookedDateFromTimestamp = moment(date).valueOf();
 
             let fullDateTimestamp = bookedDateTimestamp + bookedDateFromTimestamp + this.get('millisecondsInTwoHoursOffset');
 
-            appointment.bookedDateTo = moment(fullDateTimestamp);
+            appointment.set('bookedDateTo', moment(fullDateTimestamp));
 
             this.saveLocalAppointment(appointment);
         }

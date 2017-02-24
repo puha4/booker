@@ -4,11 +4,11 @@ export default Ember.Component.extend({
     showErrors: true,
 
     buttonLabel: function() {
-        return (this.get('employee').id) ? 'Edit Employee' : 'Add Employee';
+        return (this.get('employee.id')) ? 'Edit Employee' : 'Add Employee';
     }.property(),
 
     formTitle: function () {
-        return (this.get('employee').id) ? 'Update employee' : 'Add new employee';
+        return (this.get('employee.id')) ? 'Update employee' : 'Add new employee';
     }.property(),
     
     actions: {

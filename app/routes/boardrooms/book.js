@@ -10,24 +10,31 @@ export default Ember.Route.extend({
         let localAppointment = controller.get('localAppointment.appointment');
 
         if (+localAppointment.boardroom === +model.id) {
-            appointment.employee = localAppointment.employee;
-            appointment.boardroom = localAppointment.boardroom;
-            appointment.bookedDate = moment(localAppointment.bookedDate);
-            appointment.bookedDateFrom = moment(localAppointment.bookedDateFrom);
-            appointment.bookedDateTo  = moment(localAppointment.bookedDateTo);
-            appointment.specifics = localAppointment.specifics;
-            appointment.recuming = localAppointment.recuming;
-            appointment.recumingType = localAppointment.recumingType;
-            appointment.recumingWeekOrMonthNumber = localAppointment.recumingWeekOrMonthNumber;
+            appointment.set('employee', localAppointment.employee);
+            appointment.set('boardroom', localAppointment.boardroom);
+            appointment.set('bookedDate', moment(localAppointment.bookedDate));
+            appointment.set('bookedDateFrom', moment(localAppointment.bookedDateFrom));
+            appointment.set('bookedDateTo', moment(localAppointment.bookedDateTo));
+            appointment.set('specifics', localAppointment.specifics);
+            appointment.set('recuming', localAppointment.recuming);
+            appointment.set('recumingType', localAppointment.recumingType);
+            appointment.set('recumingWeekOrMonthNumber', localAppointment.recumingWeekOrMonthNumber);
         }
 
         this.store.findAll('employee').then((employees) => {
             controller.set('employees', employees);
-            appointment.employee = employees.get('firstObject').id;
+
+            let employee = appointment.get('employee');
+            if (employee === '' || employee === undefined || employee === null) {
+                appointment.set('employee', employees.get('firstObject.id'));
+            }
+
         });
 
-        if (appointment.recumingType === '' || appointment.recumingType === undefined || appointment.recumingType === null) {
-            appointment.recumingType = 1;
+        let recumingType = appointment.get('recumingType');
+
+        if (recumingType === '' || recumingType === undefined || recumingType === null) {
+            appointment.set('recumingType', 1);
         }
         
         controller.set('boardroom', model);
