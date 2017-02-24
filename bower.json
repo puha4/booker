@@ -3,6 +3,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "blob-polyfill": "^1.0.20150320",
-    "moment": "^2.17.1"
+    "moment": "^2.17.1",
+    "fullcalendar": "^3.2.0"
   }
 }

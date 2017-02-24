@@ -20,6 +20,11 @@ You will need the following things properly installed on your computer.
 * `npm install`
 * `bower install`
 
+In config/environment.js need set api credentials denereted in symfony, like
+* ENV.API_URL = 'http://localhost:8000';
+* ENV.API_CLIENT_ID = '3_6df20atsydc00s4wkocscook488ko4skskcskg4gs84cskgk88';
+* ENV.API_CLIENT_SECRET = '2493pdir3xz440sw8sookgcsgskw4owok404kwwog8ggscc48c';
+
 ## Running / Development
 
 * `ember serve`

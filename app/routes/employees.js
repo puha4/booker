@@ -10,18 +10,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
         createEmployee(employee) {
             var _this = this;
 
-            var errors = _this.controllerFor('employees.new').get('errors');
-
             employee.save()
                 .then((employee) => {
                     _this.transitionTo('employees.employee', employee);
                 })
                 .catch((response) => {
-                        console.log(response);
-                    // console.log(Ember.$.parseJSON(response));
-                        // .forEach(function (error) {
-                        //     console.log(error);
-                        // });
+                    console.log(response);
                 });
         },
 
